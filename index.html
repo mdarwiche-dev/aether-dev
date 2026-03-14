@@ -952,9 +952,9 @@
           Reach out and we'll get back to you within 24 hours.
         </p>
         <div class="contact-links">
-          <a href="mailto:hello@aetherdevelopment.ai" class="contact-link">
+          <a href="mailto:contact@aetherdevelopment.ai" class="contact-link">
             <span class="contact-link-label">Email</span>
-            hello@aetherdevelopment.ai
+            contact@aetherdevelopment.ai
           </a>
           <a href="https://aetherdevelopment.ai" class="contact-link">
             <span class="contact-link-label">Web</span>
@@ -962,20 +962,20 @@
           </a>
         </div>
       </div>
-      <form class="contact-form reveal" onsubmit="event.preventDefault();">
+      <form class="contact-form reveal" name="contact" action="https://formspree.io/f/myknpnrk" method="POST">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your name">
+            <input type="text" id="name" name="name" placeholder="Your name" required>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="you@company.com">
+            <input type="email" id="email" name="_replyto" placeholder="you@company.com" required>
           </div>
         </div>
         <div class="form-group">
           <label for="project">Project Details</label>
-          <textarea id="project" placeholder="Tell us what you're building..."></textarea>
+          <textarea id="project" name="message" placeholder="Tell us what you're building..."></textarea>
         </div>
         <button type="submit" class="btn-primary" style="align-self: flex-start;">Send message</button>
       </form>
