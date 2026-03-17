@@ -6,29 +6,34 @@
 <title>Aether Development — Software Consulting & Development</title>
 <link rel="icon" href="aether.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg-deep: #0a0e17;
-    --bg: #0d1220;
-    --bg-elevated: #111827;
-    --bg-card: rgba(17, 24, 39, 0.8);
-    --bg-glass: rgba(10, 14, 23, 0.75);
-    --border: rgba(0, 234, 255, 0.08);
-    --border-hover: rgba(0, 234, 255, 0.18);
-    --text: #e2e8f0;
-    --text-soft: #94a3b8;
-    --text-muted: #4a5568;
-    --accent: #00eaff;
-    --accent-dim: rgba(0, 234, 255, 0.6);
-    --grid-line: rgba(0, 234, 255, 0.04);
-    --grid-line-major: rgba(0, 234, 255, 0.08);
-    --glow: 0 0 20px rgba(0, 234, 255, 0.15);
-    --display: 'Space Grotesk', system-ui, sans-serif;
-    --body: 'Space Grotesk', system-ui, sans-serif;
-    --mono: 'JetBrains Mono', monospace;
+    --bg-deep: #e8e6e1;
+    --bg: #f0eee9;
+    --bg-elevated: #eae7e1;
+    --bg-card: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.65);
+    --border: rgba(30, 60, 70, 0.08);
+    --border-hover: rgba(30, 60, 70, 0.15);
+    --text: #1a2e35;
+    --text-soft: #4a6068;
+    --text-muted: #8a9da4;
+    --aether-1: #1a6a7a;
+    --aether-2: #1e7e8e;
+    --aether-3: #2a95a5;
+    --aether-light: #e0f0f2;
+    --warm: #d49a2a;
+    --warm-light: #f5e8cd;
+    --warm-deep: #c08518;
+    --warm-electric: #e8a910;
+    --grid-line: rgba(26, 106, 122, 0.06);
+    --grid-line-major: rgba(26, 106, 122, 0.10);
+    --display: 'IBM Plex Serif', Georgia, serif;
+    --body: 'Outfit', system-ui, sans-serif;
+    --mono: 'Space Mono', monospace;
   }
 
   html { scroll-behavior: smooth; }
@@ -43,21 +48,8 @@
   }
 
   ::selection {
-    background: var(--accent);
-    color: #0a0e17;
-  }
-
-  /* CURSOR GLOW */
-  .cursor-glow {
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 234, 255, 0.015) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s;
+    background: var(--aether-3);
+    color: #fff;
   }
 
   /* NAV */
@@ -72,14 +64,8 @@
     justify-content: space-between;
     align-items: center;
     backdrop-filter: blur(30px) saturate(1.3);
-    background: var(--bg-glass);
+    background: rgba(240, 238, 233, 0.6);
     border-bottom: 1px solid var(--border);
-    transition: border-color 0.4s, box-shadow 0.4s;
-  }
-
-  nav.scrolled {
-    border-bottom-color: rgba(0, 234, 255, 0.1);
-    box-shadow: 0 1px 30px rgba(0, 234, 255, 0.05);
   }
 
   .logo {
@@ -102,7 +88,7 @@
     font-weight: 500;
     font-size: 0.85rem;
     letter-spacing: 0.18em;
-    color: var(--accent);
+    color: var(--aether-1);
     text-transform: uppercase;
   }
 
@@ -130,11 +116,11 @@
     left: 0;
     width: 0;
     height: 1px;
-    background: var(--accent);
+    background: var(--aether-2);
     transition: width 0.4s;
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--aether-1); }
   .nav-links a:hover::after { width: 100%; }
 
 
@@ -149,7 +135,7 @@
     padding: 8rem 2rem 6rem;
     position: relative;
     overflow: hidden;
-    background: #0a0e17;
+    background: #dde3e4;
   }
 
   /* ─── TECH GRID BACKGROUND ─── */
@@ -160,25 +146,28 @@
     overflow: hidden;
   }
 
+  /* Base gradient — subtle depth, not organic */
   .grid-base {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 60% at 55% 45%, rgba(0, 234, 255, 0.03) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 30% 60%, rgba(0, 234, 255, 0.02) 0%, transparent 60%),
-      linear-gradient(180deg, #0a0e17 0%, #0d1220 50%, #0a0e17 100%);
+      radial-gradient(ellipse 70% 60% at 55% 45%, rgba(220, 232, 236, 0.9) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 30% 60%, rgba(235, 232, 225, 0.7) 0%, transparent 60%),
+      linear-gradient(180deg, #d8dfe2 0%, #dde3e4 50%, #e2e0db 100%);
   }
 
+  /* Dot grid pattern */
   .grid-dots {
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(circle, rgba(0, 234, 255, 0.15) 1px, transparent 1px);
+      radial-gradient(circle, rgba(26, 106, 122, 0.12) 1px, transparent 1px);
     background-size: 32px 32px;
     mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, black 20%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, black 20%, transparent 70%);
   }
 
+  /* Major grid lines */
   .grid-lines {
     position: absolute;
     inset: 0;
@@ -190,6 +179,7 @@
     -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, black 10%, transparent 65%);
   }
 
+  /* Minor grid lines */
   .grid-lines-minor {
     position: absolute;
     inset: 0;
@@ -199,15 +189,6 @@
     background-size: 32px 32px;
     mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, black 5%, transparent 60%);
     -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, black 5%, transparent 60%);
-  }
-
-  /* Scanline overlay */
-  .hero .scanlines {
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(0,0,0,0.03) 2px 4px);
-    pointer-events: none;
-    z-index: 3;
   }
 
   /* Floating math annotations */
@@ -220,8 +201,8 @@
   .math-note {
     position: absolute;
     font-family: var(--mono);
-    font-size: 0.55rem;
-    color: rgba(0, 234, 255, 0.25);
+    font-size: 0.6rem;
+    color: rgba(26, 106, 122, 0.25);
     letter-spacing: 0.05em;
     white-space: nowrap;
     animation: floatNote 20s ease-in-out infinite alternate;
@@ -235,12 +216,13 @@
   .math-note:nth-child(7) { animation-delay: -2s; animation-duration: 19s; }
   .math-note:nth-child(8) { animation-delay: -14s; animation-duration: 23s; }
   .math-note:nth-child(9) { animation-delay: -6s; animation-duration: 25s; }
-  .math-note:nth-child(10) { animation-delay: -10s; animation-duration: 20s; }
-  .math-note:nth-child(11) { animation-delay: -1s; animation-duration: 22s; }
+  .math-note:nth-child(10) { animation-delay: -10s; animation-duration: 17s; }
+  .math-note:nth-child(11) { animation-delay: -1s; animation-duration: 20s; }
+  .math-note:nth-child(12) { animation-delay: -8s; animation-duration: 22s; }
 
   @keyframes floatNote {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(8px, -12px); }
+    0% { transform: translate(0, 0); opacity: 0.8; }
+    100% { transform: translate(10px, -15px); opacity: 1; }
   }
 
   /* Geometric accent shapes */
@@ -252,7 +234,7 @@
 
   .geo-ring {
     position: absolute;
-    border: 1px solid rgba(0, 234, 255, 0.06);
+    border: 1.5px solid rgba(26, 106, 122, 0.15);
     border-radius: 50%;
     animation: ringPulse 8s ease-in-out infinite;
   }
@@ -261,12 +243,15 @@
     width: 400px; height: 400px;
     top: 10%; right: 5%;
     animation-delay: 0s;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: rgba(26, 106, 122, 0.18);
   }
 
   .geo-ring-2 {
     width: 250px; height: 250px;
     top: 15%; right: 10%;
-    border-color: rgba(0, 234, 255, 0.04);
+    border-color: rgba(212, 154, 42, 0.15);
     animation-delay: -2s;
     animation-duration: 10s;
   }
@@ -276,11 +261,32 @@
     bottom: -10%; left: -5%;
     animation-delay: -4s;
     animation-duration: 12s;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: rgba(26, 106, 122, 0.14);
+  }
+
+  .geo-ring-4 {
+    width: 180px; height: 180px;
+    top: 60%; left: 12%;
+    border-color: rgba(26, 106, 122, 0.12);
+    animation-delay: -6s;
+    animation-duration: 9s;
+  }
+
+  .geo-ring-5 {
+    width: 320px; height: 320px;
+    bottom: 5%; right: 15%;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: rgba(212, 154, 42, 0.12);
+    animation-delay: -3s;
+    animation-duration: 11s;
   }
 
   @keyframes ringPulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.02); }
+    0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.03) rotate(3deg); }
   }
 
   /* Axis crosshair at center */
@@ -294,7 +300,7 @@
 
   .crosshair-h, .crosshair-v {
     position: absolute;
-    background: rgba(0, 234, 255, 0.04);
+    background: rgba(26, 106, 122, 0.08);
   }
 
   .crosshair-h {
@@ -324,7 +330,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(ellipse 70% 60% at 50% 45%, transparent 40%, rgba(10, 14, 23, 0.6) 100%);
+    background: radial-gradient(ellipse 70% 60% at 50% 45%, transparent 40%, rgba(200, 198, 190, 0.5) 100%);
     z-index: 1;
   }
 
@@ -332,7 +338,7 @@
   .hero-tag {
     font-family: var(--mono);
     font-size: 0.68rem;
-    color: var(--accent);
+    color: var(--aether-1);
     letter-spacing: 0.25em;
     text-transform: uppercase;
     margin-bottom: 2rem;
@@ -344,33 +350,17 @@
 
   .hero-tag::before {
     content: '> ';
-    color: var(--accent-dim);
-    opacity: 0.6;
-  }
-
-  /* TYPEWRITER CURSOR */
-  .hero-tag .typewriter-cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background: var(--accent);
-    margin-left: 2px;
-    vertical-align: middle;
-    animation: blink 0.8s step-end infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    color: var(--warm-electric);
+    opacity: 0.7;
   }
 
   .hero h1 {
     font-family: var(--display);
-    font-size: clamp(3.2rem, 7.5vw, 7rem);
-    font-weight: 600;
-    line-height: 1.08;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.1;
     max-width: 820px;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.01em;
     color: var(--text);
     opacity: 0;
     animation: softIn 1s 0.5s forwards;
@@ -379,9 +369,9 @@
   }
 
   .hero h1 em {
-    font-style: normal;
-    font-weight: 600;
-    background: linear-gradient(135deg, var(--accent), #38bdf8);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--aether-2), var(--warm-electric));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -415,7 +405,7 @@
     margin-top: 3.5rem;
     font-family: var(--mono);
     font-size: 0.58rem;
-    color: rgba(0, 234, 255, 0.25);
+    color: rgba(26, 106, 122, 0.25);
     letter-spacing: 0.15em;
     opacity: 0;
     animation: softIn 1s 1.1s forwards;
@@ -428,24 +418,23 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.9rem 2.2rem;
-    background: transparent;
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 0.8rem;
+    background: var(--aether-1);
+    color: #fff;
+    font-family: var(--body);
+    font-size: 0.85rem;
     font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
     text-decoration: none;
-    border: 1px solid var(--accent);
-    border-radius: 4px;
+    border: none;
+    border-radius: 100px;
     cursor: pointer;
     transition: all 0.4s;
-    box-shadow: 0 0 20px rgba(0, 234, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(26, 106, 122, 0.2);
   }
 
   .btn-primary:hover {
-    background: rgba(0, 234, 255, 0.08);
-    box-shadow: var(--glow);
+    background: var(--aether-2);
+    box-shadow: 0 4px 30px rgba(26, 106, 122, 0.35);
     transform: translateY(-2px);
   }
 
@@ -454,24 +443,24 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.9rem 2.2rem;
-    background: transparent;
+    background: rgba(255,255,255,0.5);
     color: var(--text-soft);
-    font-family: var(--mono);
-    font-size: 0.8rem;
+    font-family: var(--body);
+    font-size: 0.85rem;
     font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
     text-decoration: none;
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    border: 1px solid var(--border-hover);
+    border-radius: 100px;
     cursor: pointer;
     transition: all 0.4s;
+    backdrop-filter: blur(8px);
   }
 
   .btn-ghost:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: 0 0 15px rgba(0, 234, 255, 0.06);
+    border-color: var(--aether-2);
+    color: var(--aether-1);
+    background: rgba(255,255,255,0.7);
   }
 
   @keyframes softIn {
@@ -500,38 +489,31 @@
   .section-label {
     font-family: var(--mono);
     font-size: 0.62rem;
-    color: var(--accent);
+    color: var(--text-muted);
     letter-spacing: 0.25em;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
   }
 
   .section-label::before {
-    content: '$ ';
-    color: var(--accent-dim);
-  }
-
-  .section-label::after {
-    content: '_';
-    animation: blink 0.8s step-end infinite;
-    color: var(--accent);
-    margin-left: 2px;
+    content: '// ';
+    color: var(--aether-3);
+    opacity: 0.5;
   }
 
   .section-heading {
     font-family: var(--display);
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
-    font-weight: 600;
-    line-height: 1.15;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.18;
     max-width: 580px;
     color: var(--text);
-    letter-spacing: -0.03em;
   }
 
   .section-heading em {
-    font-style: normal;
-    font-weight: 600;
-    background: linear-gradient(135deg, var(--accent), #38bdf8);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--aether-2), var(--warm-electric));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -546,7 +528,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, rgba(0, 234, 255, 0.06) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(26, 106, 122, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
     mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.3) 70%, transparent);
     -webkit-mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.3) 70%, transparent);
@@ -580,14 +562,15 @@
   .stat-card {
     padding: 2rem 1.5rem;
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border);
-    border-radius: 2px;
+    border-radius: 16px;
     transition: all 0.5s;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   }
 
+  /* Subtle corner ticks on stat cards */
   .stat-card::before {
     content: '';
     position: absolute;
@@ -595,8 +578,8 @@
     right: 8px;
     width: 12px;
     height: 12px;
-    border-top: 1px solid rgba(0, 234, 255, 0.15);
-    border-right: 1px solid rgba(0, 234, 255, 0.15);
+    border-top: 1px solid rgba(26, 106, 122, 0.15);
+    border-right: 1px solid rgba(26, 106, 122, 0.15);
     opacity: 0;
     transition: opacity 0.5s;
   }
@@ -608,8 +591,8 @@
     left: 8px;
     width: 12px;
     height: 12px;
-    border-bottom: 1px solid rgba(0, 234, 255, 0.15);
-    border-left: 1px solid rgba(0, 234, 255, 0.15);
+    border-bottom: 1px solid rgba(26, 106, 122, 0.15);
+    border-left: 1px solid rgba(26, 106, 122, 0.15);
     opacity: 0;
     transition: opacity 0.5s;
   }
@@ -619,25 +602,24 @@
 
   .stat-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 234, 255, 0.05);
-    border-color: var(--border-hover);
+    box-shadow: 0 8px 25px rgba(26, 106, 122, 0.07);
   }
 
   .stat-number {
     font-family: var(--mono);
-    font-size: 2.4rem;
-    font-weight: 500;
-    color: var(--accent);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--aether-1);
     line-height: 1;
     margin-bottom: 0.6rem;
-    text-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
   }
 
   .stat-label {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 300;
     color: var(--text-muted);
     letter-spacing: 0.02em;
+    line-height: 1.4;
   }
 
   /* SERVICES */
@@ -645,13 +627,14 @@
     background: var(--bg-elevated);
   }
 
+  /* Tech grid overlay on services section */
   #services::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(90deg, rgba(0, 234, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(0deg, rgba(0, 234, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(26, 106, 122, 0.03) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(26, 106, 122, 0.03) 1px, transparent 1px);
     background-size: 80px 80px;
     mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.4) 70%, transparent);
     -webkit-mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.4) 70%, transparent);
@@ -668,41 +651,40 @@
   .service-card {
     padding: 2.5rem 2rem 2rem;
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border);
-    border-radius: 2px;
+    border-radius: 20px;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   }
 
   .service-card:hover {
     border-color: var(--border-hover);
     transform: translateY(-6px);
-    box-shadow: 0 0 30px rgba(0, 234, 255, 0.05);
+    box-shadow: 0 12px 35px rgba(26, 106, 122, 0.07);
   }
 
-  /* Top-edge cyan glow line on hover */
+  /* Tech accent line on card top */
   .service-card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 2rem;
+    right: 2rem;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    background: linear-gradient(90deg, transparent, var(--aether-3), transparent);
     opacity: 0;
     transition: opacity 0.5s;
   }
 
-  .service-card:hover::before { opacity: 0.6; }
+  .service-card:hover::before { opacity: 0.3; }
 
   .service-icon {
     width: 48px;
     height: 48px;
-    border-radius: 4px;
-    background: rgba(0, 234, 255, 0.06);
-    border: 1px solid rgba(0, 234, 255, 0.1);
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--aether-light), var(--warm-light));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -710,6 +692,7 @@
     position: relative;
   }
 
+  /* Subtle bracket marks around icons */
   .service-icon::before {
     content: '[';
     position: absolute;
@@ -718,7 +701,7 @@
     transform: translateY(-50%);
     font-family: var(--mono);
     font-size: 1.4rem;
-    color: rgba(0, 234, 255, 0.15);
+    color: rgba(212, 154, 42, 0.2);
     font-weight: 400;
   }
 
@@ -730,14 +713,14 @@
     transform: translateY(-50%);
     font-family: var(--mono);
     font-size: 1.4rem;
-    color: rgba(0, 234, 255, 0.15);
+    color: rgba(212, 154, 42, 0.2);
     font-weight: 400;
   }
 
   .service-icon svg {
     width: 22px;
     height: 22px;
-    stroke: var(--accent);
+    stroke: var(--aether-1);
     fill: none;
     stroke-width: 1.5;
     stroke-linecap: round;
@@ -746,11 +729,10 @@
 
   .service-card h3 {
     font-family: var(--display);
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 500;
     margin-bottom: 1rem;
     color: var(--text);
-    letter-spacing: -0.02em;
   }
 
   .service-card p {
@@ -793,7 +775,7 @@
     transition: color 0.4s;
   }
 
-  .contact-link:hover { color: var(--accent); }
+  .contact-link:hover { color: var(--aether-1); }
 
   .contact-link-label {
     font-family: var(--mono);
@@ -828,9 +810,9 @@
   .form-group input,
   .form-group textarea {
     padding: 1rem 1.15rem;
-    background: rgba(0, 234, 255, 0.03);
+    background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 2px;
+    border-radius: 12px;
     color: var(--text);
     font-family: var(--body);
     font-size: 0.95rem;
@@ -847,8 +829,8 @@
 
   .form-group input:focus,
   .form-group textarea:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0, 234, 255, 0.08), 0 0 20px rgba(0, 234, 255, 0.05);
+    border-color: var(--aether-2);
+    box-shadow: 0 0 0 3px rgba(26, 106, 122, 0.06);
   }
 
   .form-group textarea {
@@ -862,14 +844,13 @@
     gap: 1.25rem;
   }
 
-  /* FOOTER — terminal status bar */
+  /* FOOTER */
   footer {
-    padding: 1.5rem 3rem;
+    padding: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--bg-elevated);
-    border-top: 1px solid var(--border);
   }
 
   .footer-left {
@@ -883,16 +864,6 @@
     text-transform: uppercase;
   }
 
-  .footer-status {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
-    display: inline-block;
-    flex-shrink: 0;
-  }
-
   .footer-logo {
     width: 20px;
     height: 20px;
@@ -901,11 +872,9 @@
   }
 
   .footer-right {
-    font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-weight: 300;
     color: var(--text-muted);
-    letter-spacing: 0.1em;
   }
 
   /* SCROLL REVEAL */
@@ -923,6 +892,101 @@
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* PAGE ENTRANCE */
+  body {
+    opacity: 0;
+    animation: pageIn 0.8s 0.1s ease-out forwards;
+  }
+
+  @keyframes pageIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SCROLL PROGRESS BAR */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--aether-2), var(--warm-electric));
+    z-index: 200;
+    transition: width 0.05s linear;
+  }
+
+  /* NAV ACTIVE STATE */
+  .nav-links a.active {
+    color: var(--aether-1);
+  }
+
+  .nav-links a.active::after {
+    width: 100%;
+  }
+
+  /* HERO PARALLAX FADE */
+  .hero-content-wrap {
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.1s, transform 0.1s;
+    will-change: opacity, transform;
+  }
+
+  /* TYPEWRITER CURSOR */
+  .hero-tag .typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--warm-electric);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 0.8s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* CARD HOVER GLOW */
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: 0;
+  }
+
+  .service-card:hover .card-glow,
+  .stat-card:hover .card-glow {
+    opacity: 1;
+  }
+
+  .service-card > *:not(.card-glow),
+  .stat-card > *:not(.card-glow) {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* CURSOR GLOW */
+  .cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    background: radial-gradient(circle, rgba(26, 106, 122, 0.06) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+    opacity: 0;
+    mix-blend-mode: multiply;
+  }
+
+  .cursor-glow.active { opacity: 1; }
 
   /* INTERLUDE */
   .interlude {
@@ -951,6 +1015,7 @@
     font-family: var(--display);
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 300;
+    font-style: italic;
     line-height: 1.5;
     color: var(--text);
     border: none;
@@ -959,9 +1024,8 @@
   }
 
   .interlude-quote em {
-    font-style: normal;
-    font-weight: 600;
-    background: linear-gradient(135deg, var(--accent), #38bdf8);
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--aether-2), var(--warm-electric));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -976,6 +1040,21 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-style: normal;
+  }
+
+  /* MAGNETIC CARD TILT */
+  .service-card {
+    transform-style: preserve-3d;
+    perspective: 800px;
+  }
+
+  /* STAT COUNTER ANIMATION */
+  .stat-number {
+    transition: color 0.5s;
+  }
+
+  .stat-card.counted .stat-number {
+    color: var(--aether-1);
   }
 
   /* RESPONSIVE */
@@ -997,16 +1076,13 @@
     nav { padding: 1rem; }
     section { padding: 4rem 1.25rem; }
     .math-annotations { display: none; }
-    .cursor-glow { display: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- Cursor glow -->
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<nav id="mainNav">
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav>
   <a href="#" class="logo">
     <img src="aether.svg" alt="Aether" class="logo-mark">
     <span class="logo-text">Aether</span>
@@ -1027,14 +1103,13 @@
     <div class="grid-lines-minor"></div>
   </div>
 
-  <!-- Scanline overlay -->
-  <div class="scanlines"></div>
-
   <!-- Geometric accent shapes -->
   <div class="geo-shapes">
     <div class="geo-ring geo-ring-1"></div>
     <div class="geo-ring geo-ring-2"></div>
     <div class="geo-ring geo-ring-3"></div>
+    <div class="geo-ring geo-ring-4"></div>
+    <div class="geo-ring geo-ring-5"></div>
   </div>
 
   <!-- Center crosshair -->
@@ -1046,32 +1121,38 @@
   <!-- Floating math annotations -->
   <div class="math-annotations">
     <div class="math-note" style="top: 12%; left: 8%;">f(x) = lim Δx→0</div>
-    <div class="math-note" style="top: 22%; right: 10%;">∇ · F = ∂P/∂x + ∂Q/∂y</div>
+    <div class="math-note" style="top: 18%; right: 10%;">∇ · F = ∂P/∂x + ∂Q/∂y</div>
     <div class="math-note" style="bottom: 28%; left: 5%;">O(log n)</div>
-    <div class="math-note" style="top: 38%; left: 12%;">λ = 2π/k</div>
-    <div class="math-note" style="bottom: 18%; right: 8%;">∫₀^∞ e^(-x²) dx = √π/2</div>
-    <div class="math-note" style="top: 55%; right: 15%;">Σᵢ aᵢxⁱ</div>
+    <div class="math-note" style="top: 38%; left: 10%;">λ = 2π/k</div>
+    <div class="math-note" style="bottom: 18%; right: 6%;">∫₀^∞ e^(-x²) dx = √π/2</div>
+    <div class="math-note" style="top: 55%; right: 12%;">Σᵢ aᵢxⁱ</div>
     <div class="math-note" style="bottom: 35%; left: 18%;">∂u/∂t = α∇²u</div>
-    <div class="math-note" style="top: 68%; left: 6%;">P(A|B) = P(B|A)·P(A)/P(B)</div>
-    <div class="math-note" style="top: 15%; left: 25%;">// O(1) lookup</div>
-    <div class="math-note" style="bottom: 22%; right: 18%;">const aether = await build()</div>
-    <div class="math-note" style="top: 45%; right: 6%;">[200 OK]</div>
+    <div class="math-note" style="top: 72%; left: 4%;">P(A|B) = P(B|A)·P(A)/P(B)</div>
+    <div class="math-note" style="top: 8%; left: 35%;">θ = arctan(y/x)</div>
+    <div class="math-note" style="bottom: 12%; left: 38%;">∮ F · ds = 0</div>
+    <div class="math-note" style="top: 45%; right: 4%;">det(A) ≠ 0</div>
+    <div class="math-note" style="bottom: 42%; right: 18%;">∀ε > 0, ∃δ > 0</div>
   </div>
 
   <!-- Node network canvas -->
   <canvas class="node-canvas" id="nodeCanvas"></canvas>
 
-  <span class="hero-tag" id="heroTag"></span>
-  <h1>Crafting software<br>from the <em>aether</em></h1>
-  <p class="hero-description">
-    We design and build software that feels effortless — clean architecture,
-    precise engineering, and solutions that quietly scale with your ambitions.
-  </p>
-  <div class="hero-cta">
-    <a href="#contact" class="btn-primary">Start a conversation</a>
-    <a href="#services" class="btn-ghost">Explore services</a>
+  <!-- Golden spiral canvas -->
+  <canvas class="node-canvas" id="spiralCanvas" style="z-index:1; opacity:0.35;"></canvas>
+
+  <div class="hero-content-wrap" id="heroContent">
+    <span class="hero-tag" id="heroTag"></span>
+    <h1>Crafting software<br>from the <em>aether</em></h1>
+    <p class="hero-description">
+      We design and build software that feels effortless — clean architecture,
+      precise engineering, and solutions that quietly scale with your ambitions.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Start a conversation</a>
+      <a href="#services" class="btn-ghost">Explore services</a>
+    </div>
+    <div class="hero-coords">42.3226° N · 83.1763° W — DEARBORN, MI</div>
   </div>
-  <div class="hero-coords">42.3226° N · 83.1763° W — DEARBORN, MI</div>
 </section>
 
 <div class="divider"></div>
@@ -1083,20 +1164,20 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <p>
-          Aether Development was built on the principle that the best software
-          is the kind you never notice — it simply works, letting your team
+          Aether Development was built on the principle that the best software 
+          is the kind you never notice — it simply works, letting your team 
           focus on what actually drives the business forward.
         </p>
         <p>
-          We bring seasoned expertise in distributed systems, performance engineering,
-          and modern full-stack development to every engagement. Whether it's a
-          greenfield product or a complex system that needs a steady hand, we
+          We bring seasoned expertise in distributed systems, performance engineering, 
+          and modern full-stack development to every engagement. Whether it's a 
+          greenfield product or a complex system that needs a steady hand, we 
           deliver software built to endure.
         </p>
       </div>
       <div class="about-stats">
         <div class="stat-card reveal reveal-delay-1">
-          <div class="stat-number">8+</div>
+          <div class="stat-number">3+</div>
           <div class="stat-label">Years of professional experience</div>
         </div>
         <div class="stat-card reveal reveal-delay-2">
@@ -1124,36 +1205,39 @@
     <h2 class="section-heading reveal">What we <em>build</em></h2>
     <div class="services-grid">
       <div class="service-card reveal reveal-delay-1">
+        <div class="card-glow"></div>
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3>Full-Stack Development</h3>
         <p>
-          End-to-end web and application development using modern frameworks.
-          Frontends and backends built with the right stack for your needs —
+          End-to-end web and application development using modern frameworks. 
+          Frontends and backends built with the right stack for your needs — 
           shipped production-ready and built to scale.
         </p>
       </div>
       <div class="service-card reveal reveal-delay-2">
+        <div class="card-glow"></div>
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         </div>
         <h3>Software Consulting</h3>
         <p>
-          Architecture reviews, technical strategy, and hands-on guidance.
-          We specialize in performance optimization, system design, and
-          helping teams make confident technical decisions, including
+          Architecture reviews, technical strategy, and hands-on guidance. 
+          We specialize in performance optimization, system design, and 
+          helping teams make confident technical decisions, including 
           practical integration with modern AI tools.
         </p>
       </div>
       <div class="service-card reveal reveal-delay-3">
+        <div class="card-glow"></div>
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
         <h3>AI Consulting & Workflow Integration</h3>
         <p>
-          We help teams integrate AI into day-to-day workflows, from internal
-          copilots and automation to process improvements that reduce manual work
+          We help teams integrate AI into day-to-day workflows, from internal 
+          copilots and automation to process improvements that reduce manual work 
           and unlock faster execution.
         </p>
       </div>
@@ -1167,9 +1251,9 @@
   <div class="interlude-inner">
     <canvas id="waveCanvas"></canvas>
     <blockquote class="interlude-quote reveal">
-      "Good design adds <em>value</em> faster than it adds cost."
+      "The purpose of computation is <em>insight</em>, not numbers."
     </blockquote>
-    <cite class="interlude-cite reveal reveal-delay-1">— Thomas C. Gale</cite>
+    <cite class="interlude-cite reveal reveal-delay-1">— Richard Hamming</cite>
   </div>
 </section>
 
@@ -1182,7 +1266,7 @@
     <div class="contact-layout">
       <div class="reveal">
         <p class="contact-info">
-          Have a project in mind? We'd love to hear about it.
+          Have a project in mind? We'd love to hear about it. 
           Reach out and we'll get back to you within 24 hours.
         </p>
         <div class="contact-links">
@@ -1220,31 +1304,15 @@
 <div class="divider"></div>
 <footer>
   <div class="footer-left">
-    <span class="footer-status"></span>
     <img src="aether.svg" alt="Aether" class="footer-logo">
     Aether Development LLC
   </div>
-  <div class="footer-right">SYS.ONLINE // © 2026</div>
+  <div class="footer-right">© 2026</div>
 </footer>
 
+<div class="cursor-glow" id="cursorGlow"></div>
+
 <script>
-  // ─── CURSOR GLOW ───
-  const cursorGlow = document.getElementById('cursorGlow');
-  document.addEventListener('mousemove', (e) => {
-    cursorGlow.style.left = e.clientX + 'px';
-    cursorGlow.style.top = e.clientY + 'px';
-  });
-
-  // ─── NAV SCROLL STATE ───
-  const mainNav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      mainNav.classList.add('scrolled');
-    } else {
-      mainNav.classList.remove('scrolled');
-    }
-  });
-
   // ─── NODE NETWORK ANIMATION ───
   const canvas = document.getElementById('nodeCanvas');
   const ctx = canvas.getContext('2d');
@@ -1278,16 +1346,13 @@
     const time = Date.now() * 0.001;
     const connectionDist = 140;
     const mouseDist = 200;
-    const mouseConnectionDist = 180;
 
-    // Update positions
     nodes.forEach(n => {
       n.x += n.vx;
       n.y += n.vy;
       if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
       if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-      // Mouse repulsion (subtle)
       const dx = n.x - mouse.x;
       const dy = n.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -1297,63 +1362,47 @@
         n.vy += (dy / dist) * force;
       }
 
-      // Dampen velocity
       n.vx *= 0.998;
       n.vy *= 0.998;
     });
 
-    // Draw connections between nodes
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
         const dy = nodes[i].y - nodes[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < connectionDist) {
-          const opacity = (1 - dist / connectionDist) * 0.12;
+          const opacity = (1 - dist / connectionDist) * 0.08;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = `rgba(0, 234, 255, ${opacity})`;
+          ctx.strokeStyle = `rgba(26, 106, 122, ${opacity})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
       }
     }
 
-    // Draw mouse-to-node connection lines
-    if (mouse.x > 0 && mouse.y > 0) {
-      nodes.forEach(n => {
-        const dx = n.x - mouse.x;
-        const dy = n.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < mouseConnectionDist) {
-          const opacity = (1 - dist / mouseConnectionDist) * 0.15;
-          ctx.beginPath();
-          ctx.moveTo(mouse.x, mouse.y);
-          ctx.lineTo(n.x, n.y);
-          ctx.strokeStyle = `rgba(0, 234, 255, ${opacity})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      });
-    }
-
-    // Draw nodes
     nodes.forEach(n => {
       const pulse = Math.sin(time * 0.8 + n.phase) * 0.5 + 0.5;
       const opacity = n.baseOpacity * (0.7 + pulse * 0.3);
 
-      // Outer glow
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.size * 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 234, 255, ${opacity * 0.08})`;
+      ctx.fillStyle = `rgba(26, 106, 122, ${opacity * 0.08})`;
       ctx.fill();
 
-      // Core dot
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 234, 255, ${opacity})`;
+      ctx.fillStyle = `rgba(26, 106, 122, ${opacity})`;
       ctx.fill();
+
+      if (n.size > 2.2) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.size * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212, 154, 42, ${opacity * 0.5})`;
+        ctx.fill();
+      }
     });
 
     requestAnimationFrame(drawNodes);
@@ -1375,14 +1424,71 @@
   drawNodes();
   window.addEventListener('resize', () => { resizeCanvas(); initNodes(); });
 
-  // ─── SCROLL REVEAL ───
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.12 });
+  // ─── GOLDEN SPIRAL ───
+  (function() {
+    const sc = document.getElementById('spiralCanvas');
+    const sctx = sc.getContext('2d');
+    const phi = (1 + Math.sqrt(5)) / 2;
+    let sAngle = 0;
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    function resizeSpiral() {
+      const hero = sc.parentElement;
+      sc.width = hero.offsetWidth;
+      sc.height = hero.offsetHeight;
+    }
+
+    function drawSpiral() {
+      sctx.clearRect(0, 0, sc.width, sc.height);
+      sAngle += 0.002;
+
+      const cx = sc.width * 0.52;
+      const cy = sc.height * 0.48;
+
+      // Draw golden spiral
+      sctx.beginPath();
+      const maxTheta = 8 * Math.PI;
+      const a = 1.2;
+      const b = Math.log(phi) / (Math.PI / 2);
+      for (let theta = 0; theta < maxTheta; theta += 0.02) {
+        const r = a * Math.exp(b * theta);
+        const x = cx + r * Math.cos(theta + sAngle);
+        const y = cy + r * Math.sin(theta + sAngle);
+        if (theta === 0) sctx.moveTo(x, y);
+        else sctx.lineTo(x, y);
+      }
+      sctx.strokeStyle = 'rgba(212, 154, 42, 0.12)';
+      sctx.lineWidth = 1;
+      sctx.stroke();
+
+      // Draw golden ratio rectangles along the spiral
+      for (let i = 0; i < 8; i++) {
+        const theta = i * Math.PI / 2;
+        const r = a * Math.exp(b * theta);
+        const x = cx + r * Math.cos(theta + sAngle);
+        const y = cy + r * Math.sin(theta + sAngle);
+        const size = r * 0.3;
+
+        sctx.save();
+        sctx.translate(x, y);
+        sctx.rotate(theta + sAngle);
+        sctx.strokeStyle = `rgba(26, 106, 122, ${0.06 + i * 0.01})`;
+        sctx.lineWidth = 0.5;
+        sctx.strokeRect(-size/2, -size/2, size, size);
+        sctx.restore();
+      }
+
+      // φ label near center
+      sctx.font = '10px "Space Mono"';
+      sctx.fillStyle = 'rgba(212, 154, 42, 0.15)';
+      sctx.fillText('φ = 1.618...', cx + 8, cy - 8);
+
+      requestAnimationFrame(drawSpiral);
+    }
+
+    resizeSpiral();
+    drawSpiral();
+    window.addEventListener('resize', resizeSpiral);
+  })();
 
   // ─── WAVE CANVAS (interlude) ───
   (function() {
@@ -1406,7 +1512,7 @@
         const freq = 0.004 + w * 0.002;
         const amp = 25 + w * 12;
         const speed = 0.3 + w * 0.12;
-        const alpha = 0.08 - w * 0.015;
+        const alpha = 0.06 - w * 0.012;
 
         for (let x = 0; x < wc.width; x++) {
           const y = centerY
@@ -1417,7 +1523,7 @@
           else wctx.lineTo(x, y);
         }
 
-        wctx.strokeStyle = `rgba(0, 234, 255, ${alpha})`;
+        wctx.strokeStyle = `rgba(26, 106, 122, ${alpha})`;
         wctx.lineWidth = 1;
         wctx.stroke();
       }
@@ -1428,6 +1534,152 @@
     resizeWave();
     drawWave();
     window.addEventListener('resize', resizeWave);
+  })();
+
+  // ─── CURSOR GLOW ───
+  (function() {
+    const glow = document.getElementById('cursorGlow');
+    let gx = 0, gy = 0, tx = 0, ty = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      glow.classList.add('active');
+    });
+
+    document.addEventListener('mouseleave', () => {
+      glow.classList.remove('active');
+    });
+
+    function animate() {
+      gx += (tx - gx) * 0.08;
+      gy += (ty - gy) * 0.08;
+      glow.style.left = gx + 'px';
+      glow.style.top = gy + 'px';
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  // ─── PARALLAX MATH NOTES ───
+  (function() {
+    const notes = document.querySelectorAll('.math-note');
+    const speeds = [];
+    notes.forEach(() => speeds.push(0.15 + Math.random() * 0.35));
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      notes.forEach((note, i) => {
+        const offset = scrollY * speeds[i];
+        note.style.transform = `translateY(${-offset}px)`;
+      });
+    }, { passive: true });
+  })();
+
+  // ─── MAGNETIC CARD TILT ───
+  (function() {
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+        card.style.transform = `translateY(-6px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  })();
+
+  // ─── ANIMATED STAT COUNTERS ───
+  (function() {
+    const statCards = document.querySelectorAll('.stat-card');
+    const counterMap = { '3+': 3, '24h': 24 };
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const card = entry.target;
+        if (card.classList.contains('counted')) return;
+        card.classList.add('counted');
+
+        const numEl = card.querySelector('.stat-number');
+        const text = numEl.textContent.trim();
+        const target = counterMap[text];
+
+        if (target !== undefined) {
+          const suffix = text.replace(/\d+/, '');
+          let current = 0;
+          const duration = 1200;
+          const start = performance.now();
+
+          function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            current = Math.round(eased * target);
+            numEl.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statCards.forEach(card => counterObserver.observe(card));
+  })();
+
+  // ─── SCROLL PROGRESS BAR ───
+  (function() {
+    const bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = progress + '%';
+    }, { passive: true });
+  })();
+
+  // ─── ACTIVE NAV TRACKING ───
+  (function() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 150;
+        if (window.scrollY >= top) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    }, { passive: true });
+  })();
+
+  // ─── HERO PARALLAX FADE ON SCROLL ───
+  (function() {
+    const heroContent = document.getElementById('heroContent');
+    const hero = document.querySelector('.hero');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const heroH = hero.offsetHeight;
+      const progress = Math.min(scrollY / (heroH * 0.6), 1);
+      heroContent.style.opacity = 1 - progress;
+      heroContent.style.transform = `translateY(${scrollY * 0.25}px)`;
+    }, { passive: true });
   })();
 
   // ─── TYPEWRITER EFFECT ───
@@ -1445,12 +1697,36 @@
         i++;
         setTimeout(type, 40 + Math.random() * 40);
       } else {
+        // Remove cursor after a pause
         setTimeout(() => { cursor.style.display = 'none'; }, 2000);
       }
     }
 
+    // Start after hero animation delay
     setTimeout(type, 600);
   })();
+
+  // ─── CARD HOVER GLOW (follows mouse) ───
+  (function() {
+    document.querySelectorAll('.card-glow').forEach(glow => {
+      const card = glow.parentElement;
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        glow.style.background = `radial-gradient(300px circle at ${x}px ${y}px, rgba(26, 106, 122, 0.06), transparent 70%)`;
+      });
+    });
+  })();
+
+  // ─── SCROLL REVEAL ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
